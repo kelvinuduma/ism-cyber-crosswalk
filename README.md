@@ -5,7 +5,7 @@ five-step framework that mirrors the NIST Cybersecurity Framework. What it doesn
 looks like inside an actual ISM Code Safety Management System. This is a structured, citable crosswalk that closes
 that gap — filterable and exportable, instead of another prose PDF.
 
-**Live version:** _(add GitHub Pages link once published)_
+**Live version:** https://kelvinuduma.github.io/ism-cyber-crosswalk/
 
 ## What this is
 
