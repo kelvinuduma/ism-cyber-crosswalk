@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ISM Code ↔ NIST CSF 2.0 Crosswalk</title>
+    <meta
+      name="description"
+      content="A structured, citable crosswalk between NIST CSF 2.0 subcategories and the ISM Code / IMO maritime cyber risk instruments — a practitioner reference, not compliance advice."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <p class="eyebrow">
+          Practitioner reference · v<span id="version">—</span> · last verified
+          <span id="lastVerified">—</span>
+        </p>
+        <h1>ISM Code ↔ NIST CSF 2.0 Crosswalk</h1>
+        <p class="lede">
+          MSC-FAL.1/Circ.3/Rev.3 already tells DPAs to structure maritime cyber
+          risk management around a five-step framework that mirrors NIST CSF.
+          This is the missing layer: what each CSF 2.0 subcategory actually
+          looks like inside an ISM Code Safety Management System.
+        </p>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="disclaimer" id="disclaimer" aria-label="Disclaimer">
+        <strong>Not compliance advice.</strong>
+        <span id="disclaimerText">Loading…</span>
+      </section>
+
+      <section class="controls" aria-label="Filters">
+        <input
+          type="search"
+          id="searchBox"
+          placeholder="Search by ID, title, ISM section, or keyword…"
+          aria-label="Search crosswalk"
+        />
+        <div
+          class="pills"
+          id="functionPills"
+          role="group"
+          aria-label="Filter by NIST CSF function"
+        ></div>
+        <label class="gap-toggle">
+          <input type="checkbox" id="gapOnly" />
+          Gaps only
+        </label>
+        <button id="exportCsv" type="button">Export CSV</button>
+        <span class="count" id="rowCount"></span>
+      </section>
+
+      <section class="table-wrap" aria-label="Crosswalk table">
+        <table id="crosswalkTable">
+          <thead>
+            <tr>
+              <th scope="col">NIST CSF 2.0</th>
+              <th scope="col">Function</th>
+              <th scope="col">ISM Code mapping</th>
+              <th scope="col">MSC.428(98) / MSC-FAL.1 Circ.3</th>
+              <th scope="col">On the vessel</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr>
+              <td colspan="5" class="loading">Loading crosswalk…</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="sources" aria-label="Primary sources">
+        <h2>Primary sources</h2>
+        <ul>
+          <li>
+            NIST Cybersecurity Framework 2.0 (Feb 2024) —
+            <a
+              href="https://www.nist.gov/cyberframework"
+              target="_blank"
+              rel="noopener"
+              >nist.gov/cyberframework</a
+            >
+          </li>
+          <li>
+            IMO MSC.428(98) — Maritime Cyber Risk Management in Safety
+            Management Systems (adopted June 2017, in force 1 Jan 2021)
+          </li>
+          <li>
+            IMO MSC-FAL.1/Circ.3/Rev.3 — Guidelines on Maritime Cyber Risk
+            Management (April 2025) —
+            <a href="https://www.imo.org" target="_blank" rel="noopener"
+              >imo.org</a
+            >
+          </li>
+          <li>ISM Code — IMO Resolution A.741(18), as amended</li>
+        </ul>
+        <p class="muted">
+          Every mapping in this table is a practitioner interpretation
+          cross-referencing the instruments above. Rows marked
+          <span class="gap-badge">gap</span> indicate a subcategory with no
+          strong direct ISM Code equivalent — flagged, not smoothed over. Verify
+          against current primary text before relying on any row for an actual
+          SMS, DOC audit, or class review.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>
+          Maintained as a practitioner reference. Not affiliated with IMO, NIST,
+          or any class society. MIT licensed — see LICENSE.
+        </p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
