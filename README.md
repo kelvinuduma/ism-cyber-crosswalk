@@ -7,6 +7,8 @@ that gap — filterable and exportable, instead of another prose PDF.
 
 **Live version:** https://kelvinuduma.github.io/ism-cyber-crosswalk/
 
+![The crosswalk table — filterable by CSF function, with gap rows flagged](assets/screenshot.png)
+
 ## What this is
 
 A row-per-subcategory mapping of NIST CSF 2.0 against:
