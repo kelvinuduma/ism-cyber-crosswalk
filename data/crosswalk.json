@@ -72,7 +72,7 @@
                                                          "references":  null
                                                      },
                                       "bimco":  {
-                                                    "references":  null
+                                                    "references":  "BIMCO Guidelines 5th Ed — Governance: leadership \u0026 policy alignment (demo mapping)"
                                                 }
                                   }
                  },
@@ -200,7 +200,7 @@
                                                          "references":  null
                                                      },
                                       "bimco":  {
-                                                    "references":  null
+                                                    "references":  "BIMCO Guidelines 5th Ed — Asset management: include OT/IT inventories (demo mapping)"
                                                 }
                                   }
                  },
@@ -324,7 +324,7 @@
                                                          "references":  null
                                                      },
                                       "bimco":  {
-                                                    "references":  null
+                                                    "references":  "BIMCO Guidelines 5th Ed — Access control: credentials and admin account management (demo mapping)"
                                                 }
                                   }
                  },
@@ -483,7 +483,7 @@
                                                          "references":  null
                                                      },
                                       "bimco":  {
-                                                    "references":  null
+                                                    "references":  "BIMCO Guidelines 5th Ed — Monitoring: network and service monitoring expectations (demo mapping)"
                                                 }
                                   }
                  },
@@ -578,7 +578,7 @@
                                                          "references":  null
                                                      },
                                       "bimco":  {
-                                                    "references":  null
+                                                    "references":  "BIMCO Guidelines 5th Ed — Incident response: execute and coordinate recovery drills (demo mapping)"
                                                 }
                                   }
                  },
