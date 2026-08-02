@@ -1,256 +1,716 @@
-{
-  "meta": {
-    "title": "ISM Code ↔ NIST CSF 2.0 Crosswalk",
-    "version": "0.1.0",
-    "lastVerified": "2026-07-26",
-    "frameworks": {
-      "source": "NIST Cybersecurity Framework 2.0 (Feb 2024)",
-      "targets": [
-        "ISM Code (IMO Res. A.741(18), as amended)",
-        "IMO MSC.428(98) (mandate, in force 1 Jan 2021)",
-        "IMO MSC-FAL.1/Circ.3/Rev.3 (guidance, April 2025)"
-      ]
-    },
-    "disclaimer": "This is an informational reference for practitioners, not compliance or legal advice. Every row cites its primary source — verify against the current text of each instrument and consult your class society, flag state, or DPA before relying on any mapping for an actual SMS or DOC audit. Standards revise; check the 'last verified' date above before citing."
-  },
-  "rows": [
-    {
-      "id": "GV.OC-01",
-      "function": "Govern",
-      "title": "Organizational mission is understood and informs cybersecurity risk management",
-      "ism": [
-        "Section 1 (General — Safety and Environmental Policy)",
-        "Section 3 (Company Responsibilities and Authority)"
-      ],
-      "msc": "MSC.428(98) — operative paragraph (mandate itself)",
-      "relationship": "supports",
-      "vesselContext": "Cyber risk sits inside the Company's stated Safety Management objectives, not as a bolt-on IT policy separate from the SMS.",
-      "gap": false
-    },
-    {
-      "id": "GV.RM-01",
-      "function": "Govern",
-      "title": "Risk management objectives are established and agreed to by organizational stakeholders",
-      "ism": [
-        "Section 1.4 (Safety Management objectives)",
-        "Section 3 (Company Responsibilities)"
-      ],
-      "msc": "MSC.428(98) — mandate; MSC-FAL.1/Circ.3/Rev.3 Section 3 (five-step framework)",
-      "relationship": "supports",
-      "vesselContext": "The DPA's cyber risk appetite should be a stated SMS objective with sign-off, not an assumed default.",
-      "gap": false
-    },
-    {
-      "id": "GV.SC-01",
-      "function": "Govern",
-      "title": "A cybersecurity supply chain risk management program is established and agreed to by stakeholders",
-      "ism": [
-        "Section 3 (Company Responsibilities — extends to appointed ship managers/vendors)"
-      ],
-      "msc": "No direct MSC-FAL.1/Circ.3 clause; see IACS UR E27 (out of MVP scope)",
-      "relationship": "partial — no direct ISM equivalent",
-      "vesselContext": "Third-party OT vendors (ECDIS/VSAT providers, remote-maintenance contractors) rarely appear in existing SMS vendor-management procedures today.",
-      "gap": true
-    },
-    {
-      "id": "GV.RR-02",
-      "function": "Govern",
-      "title": "Roles, responsibilities, and authorities related to cybersecurity risk management are established and communicated",
-      "ism": [
-        "Section 4 (Designated Person(s) Ashore)",
-        "Section 5 (Master's Responsibility and Authority)"
-      ],
-      "msc": "MSC.428(98) — mandate places responsibility on the Company via ISM Section 4/5",
-      "relationship": "supports",
-      "vesselContext": "The DPA is the natural cyber-risk owner ashore; the Master retains onboard authority — CSF wants this written down explicitly, not assumed from the general DPA/Master roles.",
-      "gap": false
-    },
-    {
-      "id": "ID.AM-01",
-      "function": "Identify",
-      "title": "Inventories of hardware managed by the organization are maintained",
-      "ism": ["Section 10 (Maintenance of the Ship and Equipment)"],
-      "msc": "MSC-FAL.1/Circ.3/Rev.3 Annex — shore-side asset inventory (new in Rev.3)",
-      "relationship": "supports",
-      "vesselContext": "Extend the existing Planned Maintenance System (PMS) equipment register to cover OT/IT — ECDIS, VSAT modem, engine control unit — not just mechanical plant.",
-      "gap": false
-    },
-    {
-      "id": "ID.AM-02",
-      "function": "Identify",
-      "title": "Inventories of software, services, and systems managed by the organization are maintained",
-      "ism": ["Section 10 (Maintenance of the Ship and Equipment)"],
-      "msc": "MSC-FAL.1/Circ.3/Rev.3 Annex — shore-side asset inventory (new in Rev.3)",
-      "relationship": "supports",
-      "vesselContext": "Firmware versions and network services (remote-access clients, AIS transponder software) need their own register — most PMS systems only track hardware, not software/service state.",
-      "gap": false
-    },
-    {
-      "id": "ID.RA-01",
-      "function": "Identify",
-      "title": "Vulnerabilities in assets are identified, validated, and recorded",
-      "ism": [
-        "Section 9 (Reports and Analysis of Non-Conformities — by extension, after the fact)"
-      ],
-      "msc": "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Identify\" step (risk assessment)",
-      "relationship": "partial — weak ISM equivalent",
-      "vesselContext": "No ISM clause covers proactive vulnerability scanning. This is the clearest gap between CSF and ISM — most SMSs only capture vulnerabilities reactively, via non-conformity reports filed after something already went wrong.",
-      "gap": true
-    },
-    {
-      "id": "ID.RA-05",
-      "function": "Identify",
-      "title": "Threats, vulnerabilities, likelihoods, and impacts are used to understand risk and inform prioritization",
-      "ism": ["Section 1 (risk-based Safety Management approach)"],
-      "msc": "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Identify\" step",
-      "relationship": "supports",
-      "vesselContext": "The cyber risk assessment should feed the same risk register as other operational hazards (grounding, fire, collision) — not sit in a separate standalone \"IT risk\" document.",
-      "gap": false
-    },
-    {
-      "id": "PR.AA-01",
-      "function": "Protect",
-      "title": "Identities and credentials for authorized users, services, and hardware are managed",
-      "ism": ["Section 7 (Shipboard Operations)"],
-      "msc": "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Protect\" step (access management)",
-      "relationship": "supports",
-      "vesselContext": "Access-control procedures for OT consoles (ECDIS, engine-control HMI) belong in the same shipboard operating procedures as other critical equipment, with shared-account use named as a specific non-conformity risk.",
-      "gap": false
-    },
-    {
-      "id": "PR.AA-05",
-      "function": "Protect",
-      "title": "Access permissions, entitlements, and authorizations are defined and enforced",
-      "ism": ["Section 7 (Shipboard Operations)", "Section 11 (Documentation)"],
-      "msc": "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Protect\" step",
-      "relationship": "supports",
-      "vesselContext": "Who may log into the VSAT modem or ECDIS admin account should be a documented, version-controlled procedure — like any other SMS-controlled document.",
-      "gap": false
-    },
-    {
-      "id": "PR.DS-01",
-      "function": "Protect",
-      "title": "The confidentiality, integrity, and availability of data-at-rest are protected",
-      "ism": ["Section 11 (Documentation — control of documented information)"],
-      "msc": "No dedicated MSC-FAL.1/Circ.3 clause — implied under \"Protect\"",
-      "relationship": "partial — extends existing intent",
-      "vesselContext": "VDR data, ECDIS chart updates, and passage plans increasingly live on networked storage. Section 11's document-control intent extends naturally here, but almost no SMS says so explicitly.",
-      "gap": true
-    },
-    {
-      "id": "PR.PS-01",
-      "function": "Protect",
-      "title": "Configuration management practices are established and applied",
-      "ism": ["Section 10 (Maintenance of the Ship and Equipment)"],
-      "msc": "No dedicated MSC-FAL.1/Circ.3 clause — implied under \"Protect\"",
-      "relationship": "supports",
-      "vesselContext": "Configuration baselines for OT systems (firewall rules, USB port lockdown) fit the same \"maintained in a good state of repair\" logic Section 10 already applies to machinery.",
-      "gap": false
-    },
-    {
-      "id": "PR.AT-01",
-      "function": "Protect",
-      "title": "Personnel are provided with cybersecurity awareness and training",
-      "ism": ["Section 6 (Resources and Personnel)"],
-      "msc": "MSC.428(98) does not mandate crew training explicitly — a named gap",
-      "relationship": "partial — general competency clause only",
-      "vesselContext": "Cyber-awareness training for crew and officers has a natural home in Section 6, but MSC.428(98) never mandates it directly — companies must read it into the general competency requirement themselves.",
-      "gap": true
-    },
-    {
-      "id": "DE.CM-01",
-      "function": "Detect",
-      "title": "Networks and network services are monitored to find potentially adverse events",
-      "ism": [
-        "Section 7 (Shipboard Operations)",
-        "Section 9 (Non-Conformity Reporting)"
-      ],
-      "msc": "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Detect\" step",
-      "relationship": "supports",
-      "vesselContext": "Anomaly-detection findings should route into the same non-conformity / hazardous-occurrence reporting line as any other operational deviation — not a siloed IT log nobody in the SMS ever reads.",
-      "gap": false
-    },
-    {
-      "id": "DE.CM-09",
-      "function": "Detect",
-      "title": "Computing hardware and software, runtime environments, and their data are monitored",
-      "ism": [
-        "Section 10 (Maintenance of the Ship and Equipment)",
-        "Section 9 (Non-Conformity Reporting)"
-      ],
-      "msc": "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Detect\" step",
-      "relationship": "supports",
-      "vesselContext": "Extends PMS condition-monitoring logic (vibration, temperature trending) to OT system health and integrity monitoring.",
-      "gap": false
-    },
-    {
-      "id": "DE.AE-02",
-      "function": "Detect",
-      "title": "Potentially adverse events are analyzed to better understand associated activities",
-      "ism": ["Section 9 (Reports and Analysis of Non-Conformities)"],
-      "msc": "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Detect\" step",
-      "relationship": "supports",
-      "vesselContext": "Root-cause analysis of a cyber anomaly should follow the same investigation discipline as any other hazardous occurrence, feeding the same trend log.",
-      "gap": false
-    },
-    {
-      "id": "RS.MA-01",
-      "function": "Respond",
-      "title": "The incident response plan is executed once an incident is declared",
-      "ism": ["Section 8 (Emergency Preparedness)"],
-      "msc": "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Respond\" step",
-      "relationship": "supports",
-      "vesselContext": "A cyber incident should trigger the same drilled emergency-response muscle memory as fire or flooding — the \"Respond\" step, operationalized through existing drill discipline rather than a separate cyber-only plan nobody rehearses.",
-      "gap": false
-    },
-    {
-      "id": "RS.CO-02",
-      "function": "Respond",
-      "title": "Internal and external stakeholders are notified of incidents",
-      "ism": [
-        "Section 8 (Emergency Preparedness)",
-        "Section 3 (Company Responsibilities — reporting to flag state/class)"
-      ],
-      "msc": "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Respond\" step",
-      "relationship": "supports",
-      "vesselContext": "Who gets called — DPA, flag state, class society, insurer — during a cyber incident should be pre-defined exactly like any other emergency contact tree, not improvised.",
-      "gap": false
-    },
-    {
-      "id": "RS.AN-03",
-      "function": "Respond",
-      "title": "Analysis is performed to determine what took place during an incident and its root cause",
-      "ism": [
-        "Section 9 (Non-Conformity Reporting)",
-        "Section 12 (Company Verification, Review and Evaluation)"
-      ],
-      "msc": "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Respond\" step",
-      "relationship": "supports",
-      "vesselContext": "Post-incident cyber analysis should feed the same non-conformity trend review the Company already conducts at management review, not a parallel unread IT report.",
-      "gap": false
-    },
-    {
-      "id": "RC.RP-01",
-      "function": "Recover",
-      "title": "The recovery portion of the incident response plan is executed once initiated",
-      "ism": ["Section 8 (Emergency Preparedness) — weak coverage"],
-      "msc": "No dedicated MSC-FAL.1/Circ.3 clause — \"Recover\" is the least-developed step in current maritime guidance",
-      "relationship": "partial — clearest gap in the whole crosswalk",
-      "vesselContext": "Backup-ECDIS and OT-rebuild procedures are rarely drilled with the rigor of lifeboat or fire drills. CSF 2.0's Recover function is the single biggest gap versus current ISM/IMO practice.",
-      "gap": true
-    },
-    {
-      "id": "RC.CO-03",
-      "function": "Recover",
-      "title": "Recovery activities and progress are communicated to internal and external stakeholders",
-      "ism": [
-        "Section 8 (Emergency Preparedness)",
-        "Section 3 (Company Responsibilities)"
-      ],
-      "msc": "No dedicated MSC-FAL.1/Circ.3 clause",
-      "relationship": "partial",
-      "vesselContext": "Stakeholder communication during recovery (charterers, flag state, class, insurer) needs the same discipline as initial incident notification — often forgotten once the immediate emergency passes.",
-      "gap": true
-    }
-  ]
+﻿{
+    "meta":  {
+                 "title":  "ISM Code â†” NIST CSF 2.0 Crosswalk",
+                 "version":  "0.1.0",
+                 "lastVerified":  "2026-07-26",
+                 "frameworks":  {
+                                    "source":  "NIST Cybersecurity Framework 2.0 (Feb 2024)",
+                                    "registry":  [
+                                                     {
+                                                         "id":  "ism",
+                                                         "name":  "ISM Code",
+                                                         "citation":  "IMO Res. A.741(18), as amended",
+                                                         "type":  "target",
+                                                         "version":  "as amended",
+                                                         "url":  "https://www.imo.org/"
+                                                     },
+                                                     {
+                                                         "id":  "msc428",
+                                                         "name":  "IMO MSC.428(98)",
+                                                         "citation":  "Mandate (in force 1 Jan 2021)",
+                                                         "type":  "target",
+                                                         "version":  "2021",
+                                                         "url":  "https://www.imo.org/"
+                                                     },
+                                                     {
+                                                         "id":  "mscFalRev3",
+                                                         "name":  "IMO MSC-FAL.1/Circ.3/Rev.3",
+                                                         "citation":  "Guidance (April 2025)",
+                                                         "type":  "target",
+                                                         "version":  "2025-04",
+                                                         "url":  "https://www.imo.org/"
+                                                     },
+                                                     {
+                                                         "id":  "bimco",
+                                                         "name":  "BIMCO Guidelines",
+                                                         "citation":  "BIMCO Guidelines 5th Ed (planned integration)",
+                                                         "type":  "target",
+                                                         "version":  "5th",
+                                                         "url":  null
+                                                     }
+                                                 ]
+                                },
+                 "disclaimer":  "This is an informational reference for practitioners, not compliance or legal advice. Every row cites its primary source â€” verify against the current text of each instrument and consult your class society, flag state, or DPA before relying on any mapping for an actual SMS or DOC audit. Standards revise; check the \u0027last verified\u0027 date above before citing."
+             },
+    "rows":  [
+                 {
+                     "id":  "GV.OC-01",
+                     "function":  "Govern",
+                     "title":  "Organizational mission is understood and informs cybersecurity risk management",
+                     "ism":  [
+                                 "Section 1 (General â€” Safety and Environmental Policy)",
+                                 "Section 3 (Company Responsibilities and Authority)"
+                             ],
+                     "msc":  "MSC.428(98) â€” operative paragraph (mandate itself)",
+                     "relationship":  "supports",
+                     "vesselContext":  "Cyber risk sits inside the Company\u0027s stated Safety Management objectives, not as a bolt-on IT policy separate from the SMS.",
+                     "gap":  false,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 1 (General â€” Safety and Environmental Policy)",
+                                                                     "Section 3 (Company Responsibilities and Authority)"
+                                                                 ],
+                                                  "relationship":  "supports",
+                                                  "vesselContext":  "Cyber risk sits inside the Company\u0027s stated Safety Management objectives, not as a bolt-on IT policy separate from the SMS."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC.428(98) â€” operative paragraph (mandate itself)",
+                                                     "relationship":  "supports"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "GV.RM-01",
+                     "function":  "Govern",
+                     "title":  "Risk management objectives are established and agreed to by organizational stakeholders",
+                     "ism":  [
+                                 "Section 1.4 (Safety Management objectives)",
+                                 "Section 3 (Company Responsibilities)"
+                             ],
+                     "msc":  "MSC.428(98) â€” mandate; MSC-FAL.1/Circ.3/Rev.3 Section 3 (five-step framework)",
+                     "relationship":  "supports",
+                     "vesselContext":  "The DPA\u0027s cyber risk appetite should be a stated SMS objective with sign-off, not an assumed default.",
+                     "gap":  false,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 1.4 (Safety Management objectives)",
+                                                                     "Section 3 (Company Responsibilities)"
+                                                                 ],
+                                                  "relationship":  "supports",
+                                                  "vesselContext":  "The DPA\u0027s cyber risk appetite should be a stated SMS objective with sign-off, not an assumed default."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC.428(98) â€” mandate; MSC-FAL.1/Circ.3/Rev.3 Section 3 (five-step framework)",
+                                                     "relationship":  "supports"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "GV.SC-01",
+                     "function":  "Govern",
+                     "title":  "A cybersecurity supply chain risk management program is established and agreed to by stakeholders",
+                     "ism":  [
+                                 "Section 3 (Company Responsibilities â€” extends to appointed ship managers/vendors)"
+                             ],
+                     "msc":  "No direct MSC-FAL.1/Circ.3 clause; see IACS UR E27 (out of MVP scope)",
+                     "relationship":  "partial â€” no direct ISM equivalent",
+                     "vesselContext":  "Third-party OT vendors (ECDIS/VSAT providers, remote-maintenance contractors) rarely appear in existing SMS vendor-management procedures today.",
+                     "gap":  true,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 3 (Company Responsibilities â€” extends to appointed ship managers/vendors)"
+                                                                 ],
+                                                  "relationship":  "partial â€” no direct ISM equivalent",
+                                                  "vesselContext":  "Third-party OT vendors (ECDIS/VSAT providers, remote-maintenance contractors) rarely appear in existing SMS vendor-management procedures today."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "No direct MSC-FAL.1/Circ.3 clause; see IACS UR E27 (out of MVP scope)",
+                                                     "relationship":  "partial â€” no direct ISM equivalent"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "GV.RR-02",
+                     "function":  "Govern",
+                     "title":  "Roles, responsibilities, and authorities related to cybersecurity risk management are established and communicated",
+                     "ism":  [
+                                 "Section 4 (Designated Person(s) Ashore)",
+                                 "Section 5 (Master\u0027s Responsibility and Authority)"
+                             ],
+                     "msc":  "MSC.428(98) â€” mandate places responsibility on the Company via ISM Section 4/5",
+                     "relationship":  "supports",
+                     "vesselContext":  "The DPA is the natural cyber-risk owner ashore; the Master retains onboard authority â€” CSF wants this written down explicitly, not assumed from the general DPA/Master roles.",
+                     "gap":  false,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 4 (Designated Person(s) Ashore)",
+                                                                     "Section 5 (Master\u0027s Responsibility and Authority)"
+                                                                 ],
+                                                  "relationship":  "supports",
+                                                  "vesselContext":  "The DPA is the natural cyber-risk owner ashore; the Master retains onboard authority â€” CSF wants this written down explicitly, not assumed from the general DPA/Master roles."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC.428(98) â€” mandate places responsibility on the Company via ISM Section 4/5",
+                                                     "relationship":  "supports"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "ID.AM-01",
+                     "function":  "Identify",
+                     "title":  "Inventories of hardware managed by the organization are maintained",
+                     "ism":  [
+                                 "Section 10 (Maintenance of the Ship and Equipment)"
+                             ],
+                     "msc":  "MSC-FAL.1/Circ.3/Rev.3 Annex â€” shore-side asset inventory (new in Rev.3)",
+                     "relationship":  "supports",
+                     "vesselContext":  "Extend the existing Planned Maintenance System (PMS) equipment register to cover OT/IT â€” ECDIS, VSAT modem, engine control unit â€” not just mechanical plant.",
+                     "gap":  false,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 10 (Maintenance of the Ship and Equipment)"
+                                                                 ],
+                                                  "relationship":  "supports",
+                                                  "vesselContext":  "Extend the existing Planned Maintenance System (PMS) equipment register to cover OT/IT â€” ECDIS, VSAT modem, engine control unit â€” not just mechanical plant."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC-FAL.1/Circ.3/Rev.3 Annex â€” shore-side asset inventory (new in Rev.3)",
+                                                     "relationship":  "supports"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "ID.AM-02",
+                     "function":  "Identify",
+                     "title":  "Inventories of software, services, and systems managed by the organization are maintained",
+                     "ism":  [
+                                 "Section 10 (Maintenance of the Ship and Equipment)"
+                             ],
+                     "msc":  "MSC-FAL.1/Circ.3/Rev.3 Annex â€” shore-side asset inventory (new in Rev.3)",
+                     "relationship":  "supports",
+                     "vesselContext":  "Firmware versions and network services (remote-access clients, AIS transponder software) need their own register â€” most PMS systems only track hardware, not software/service state.",
+                     "gap":  false,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 10 (Maintenance of the Ship and Equipment)"
+                                                                 ],
+                                                  "relationship":  "supports",
+                                                  "vesselContext":  "Firmware versions and network services (remote-access clients, AIS transponder software) need their own register â€” most PMS systems only track hardware, not software/service state."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC-FAL.1/Circ.3/Rev.3 Annex â€” shore-side asset inventory (new in Rev.3)",
+                                                     "relationship":  "supports"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "ID.RA-01",
+                     "function":  "Identify",
+                     "title":  "Vulnerabilities in assets are identified, validated, and recorded",
+                     "ism":  [
+                                 "Section 9 (Reports and Analysis of Non-Conformities â€” by extension, after the fact)"
+                             ],
+                     "msc":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Identify\" step (risk assessment)",
+                     "relationship":  "partial â€” weak ISM equivalent",
+                     "vesselContext":  "No ISM clause covers proactive vulnerability scanning. This is the clearest gap between CSF and ISM â€” most SMSs only capture vulnerabilities reactively, via non-conformity reports filed after something already went wrong.",
+                     "gap":  true,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 9 (Reports and Analysis of Non-Conformities â€” by extension, after the fact)"
+                                                                 ],
+                                                  "relationship":  "partial â€” weak ISM equivalent",
+                                                  "vesselContext":  "No ISM clause covers proactive vulnerability scanning. This is the clearest gap between CSF and ISM â€” most SMSs only capture vulnerabilities reactively, via non-conformity reports filed after something already went wrong."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Identify\" step (risk assessment)",
+                                                     "relationship":  "partial â€” weak ISM equivalent"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "ID.RA-05",
+                     "function":  "Identify",
+                     "title":  "Threats, vulnerabilities, likelihoods, and impacts are used to understand risk and inform prioritization",
+                     "ism":  [
+                                 "Section 1 (risk-based Safety Management approach)"
+                             ],
+                     "msc":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Identify\" step",
+                     "relationship":  "supports",
+                     "vesselContext":  "The cyber risk assessment should feed the same risk register as other operational hazards (grounding, fire, collision) â€” not sit in a separate standalone \"IT risk\" document.",
+                     "gap":  false,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 1 (risk-based Safety Management approach)"
+                                                                 ],
+                                                  "relationship":  "supports",
+                                                  "vesselContext":  "The cyber risk assessment should feed the same risk register as other operational hazards (grounding, fire, collision) â€” not sit in a separate standalone \"IT risk\" document."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Identify\" step",
+                                                     "relationship":  "supports"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "PR.AA-01",
+                     "function":  "Protect",
+                     "title":  "Identities and credentials for authorized users, services, and hardware are managed",
+                     "ism":  [
+                                 "Section 7 (Shipboard Operations)"
+                             ],
+                     "msc":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Protect\" step (access management)",
+                     "relationship":  "supports",
+                     "vesselContext":  "Access-control procedures for OT consoles (ECDIS, engine-control HMI) belong in the same shipboard operating procedures as other critical equipment, with shared-account use named as a specific non-conformity risk.",
+                     "gap":  false,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 7 (Shipboard Operations)"
+                                                                 ],
+                                                  "relationship":  "supports",
+                                                  "vesselContext":  "Access-control procedures for OT consoles (ECDIS, engine-control HMI) belong in the same shipboard operating procedures as other critical equipment, with shared-account use named as a specific non-conformity risk."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Protect\" step (access management)",
+                                                     "relationship":  "supports"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "PR.AA-05",
+                     "function":  "Protect",
+                     "title":  "Access permissions, entitlements, and authorizations are defined and enforced",
+                     "ism":  [
+                                 "Section 7 (Shipboard Operations)",
+                                 "Section 11 (Documentation)"
+                             ],
+                     "msc":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Protect\" step",
+                     "relationship":  "supports",
+                     "vesselContext":  "Who may log into the VSAT modem or ECDIS admin account should be a documented, version-controlled procedure â€” like any other SMS-controlled document.",
+                     "gap":  false,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 7 (Shipboard Operations)",
+                                                                     "Section 11 (Documentation)"
+                                                                 ],
+                                                  "relationship":  "supports",
+                                                  "vesselContext":  "Who may log into the VSAT modem or ECDIS admin account should be a documented, version-controlled procedure â€” like any other SMS-controlled document."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Protect\" step",
+                                                     "relationship":  "supports"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "PR.DS-01",
+                     "function":  "Protect",
+                     "title":  "The confidentiality, integrity, and availability of data-at-rest are protected",
+                     "ism":  [
+                                 "Section 11 (Documentation â€” control of documented information)"
+                             ],
+                     "msc":  "No dedicated MSC-FAL.1/Circ.3 clause â€” implied under \"Protect\"",
+                     "relationship":  "partial â€” extends existing intent",
+                     "vesselContext":  "VDR data, ECDIS chart updates, and passage plans increasingly live on networked storage. Section 11\u0027s document-control intent extends naturally here, but almost no SMS says so explicitly.",
+                     "gap":  true,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 11 (Documentation â€” control of documented information)"
+                                                                 ],
+                                                  "relationship":  "partial â€” extends existing intent",
+                                                  "vesselContext":  "VDR data, ECDIS chart updates, and passage plans increasingly live on networked storage. Section 11\u0027s document-control intent extends naturally here, but almost no SMS says so explicitly."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "No dedicated MSC-FAL.1/Circ.3 clause â€” implied under \"Protect\"",
+                                                     "relationship":  "partial â€” extends existing intent"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "PR.PS-01",
+                     "function":  "Protect",
+                     "title":  "Configuration management practices are established and applied",
+                     "ism":  [
+                                 "Section 10 (Maintenance of the Ship and Equipment)"
+                             ],
+                     "msc":  "No dedicated MSC-FAL.1/Circ.3 clause â€” implied under \"Protect\"",
+                     "relationship":  "supports",
+                     "vesselContext":  "Configuration baselines for OT systems (firewall rules, USB port lockdown) fit the same \"maintained in a good state of repair\" logic Section 10 already applies to machinery.",
+                     "gap":  false,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 10 (Maintenance of the Ship and Equipment)"
+                                                                 ],
+                                                  "relationship":  "supports",
+                                                  "vesselContext":  "Configuration baselines for OT systems (firewall rules, USB port lockdown) fit the same \"maintained in a good state of repair\" logic Section 10 already applies to machinery."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "No dedicated MSC-FAL.1/Circ.3 clause â€” implied under \"Protect\"",
+                                                     "relationship":  "supports"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "PR.AT-01",
+                     "function":  "Protect",
+                     "title":  "Personnel are provided with cybersecurity awareness and training",
+                     "ism":  [
+                                 "Section 6 (Resources and Personnel)"
+                             ],
+                     "msc":  "MSC.428(98) does not mandate crew training explicitly â€” a named gap",
+                     "relationship":  "partial â€” general competency clause only",
+                     "vesselContext":  "Cyber-awareness training for crew and officers has a natural home in Section 6, but MSC.428(98) never mandates it directly â€” companies must read it into the general competency requirement themselves.",
+                     "gap":  true,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 6 (Resources and Personnel)"
+                                                                 ],
+                                                  "relationship":  "partial â€” general competency clause only",
+                                                  "vesselContext":  "Cyber-awareness training for crew and officers has a natural home in Section 6, but MSC.428(98) never mandates it directly â€” companies must read it into the general competency requirement themselves."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC.428(98) does not mandate crew training explicitly â€” a named gap",
+                                                     "relationship":  "partial â€” general competency clause only"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "DE.CM-01",
+                     "function":  "Detect",
+                     "title":  "Networks and network services are monitored to find potentially adverse events",
+                     "ism":  [
+                                 "Section 7 (Shipboard Operations)",
+                                 "Section 9 (Non-Conformity Reporting)"
+                             ],
+                     "msc":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Detect\" step",
+                     "relationship":  "supports",
+                     "vesselContext":  "Anomaly-detection findings should route into the same non-conformity / hazardous-occurrence reporting line as any other operational deviation â€” not a siloed IT log nobody in the SMS ever reads.",
+                     "gap":  false,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 7 (Shipboard Operations)",
+                                                                     "Section 9 (Non-Conformity Reporting)"
+                                                                 ],
+                                                  "relationship":  "supports",
+                                                  "vesselContext":  "Anomaly-detection findings should route into the same non-conformity / hazardous-occurrence reporting line as any other operational deviation â€” not a siloed IT log nobody in the SMS ever reads."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Detect\" step",
+                                                     "relationship":  "supports"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "DE.CM-09",
+                     "function":  "Detect",
+                     "title":  "Computing hardware and software, runtime environments, and their data are monitored",
+                     "ism":  [
+                                 "Section 10 (Maintenance of the Ship and Equipment)",
+                                 "Section 9 (Non-Conformity Reporting)"
+                             ],
+                     "msc":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Detect\" step",
+                     "relationship":  "supports",
+                     "vesselContext":  "Extends PMS condition-monitoring logic (vibration, temperature trending) to OT system health and integrity monitoring.",
+                     "gap":  false,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 10 (Maintenance of the Ship and Equipment)",
+                                                                     "Section 9 (Non-Conformity Reporting)"
+                                                                 ],
+                                                  "relationship":  "supports",
+                                                  "vesselContext":  "Extends PMS condition-monitoring logic (vibration, temperature trending) to OT system health and integrity monitoring."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Detect\" step",
+                                                     "relationship":  "supports"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "DE.AE-02",
+                     "function":  "Detect",
+                     "title":  "Potentially adverse events are analyzed to better understand associated activities",
+                     "ism":  [
+                                 "Section 9 (Reports and Analysis of Non-Conformities)"
+                             ],
+                     "msc":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Detect\" step",
+                     "relationship":  "supports",
+                     "vesselContext":  "Root-cause analysis of a cyber anomaly should follow the same investigation discipline as any other hazardous occurrence, feeding the same trend log.",
+                     "gap":  false,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 9 (Reports and Analysis of Non-Conformities)"
+                                                                 ],
+                                                  "relationship":  "supports",
+                                                  "vesselContext":  "Root-cause analysis of a cyber anomaly should follow the same investigation discipline as any other hazardous occurrence, feeding the same trend log."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Detect\" step",
+                                                     "relationship":  "supports"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "RS.MA-01",
+                     "function":  "Respond",
+                     "title":  "The incident response plan is executed once an incident is declared",
+                     "ism":  [
+                                 "Section 8 (Emergency Preparedness)"
+                             ],
+                     "msc":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Respond\" step",
+                     "relationship":  "supports",
+                     "vesselContext":  "A cyber incident should trigger the same drilled emergency-response muscle memory as fire or flooding â€” the \"Respond\" step, operationalized through existing drill discipline rather than a separate cyber-only plan nobody rehearses.",
+                     "gap":  false,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 8 (Emergency Preparedness)"
+                                                                 ],
+                                                  "relationship":  "supports",
+                                                  "vesselContext":  "A cyber incident should trigger the same drilled emergency-response muscle memory as fire or flooding â€” the \"Respond\" step, operationalized through existing drill discipline rather than a separate cyber-only plan nobody rehearses."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Respond\" step",
+                                                     "relationship":  "supports"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "RS.CO-02",
+                     "function":  "Respond",
+                     "title":  "Internal and external stakeholders are notified of incidents",
+                     "ism":  [
+                                 "Section 8 (Emergency Preparedness)",
+                                 "Section 3 (Company Responsibilities â€” reporting to flag state/class)"
+                             ],
+                     "msc":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Respond\" step",
+                     "relationship":  "supports",
+                     "vesselContext":  "Who gets called â€” DPA, flag state, class society, insurer â€” during a cyber incident should be pre-defined exactly like any other emergency contact tree, not improvised.",
+                     "gap":  false,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 8 (Emergency Preparedness)",
+                                                                     "Section 3 (Company Responsibilities â€” reporting to flag state/class)"
+                                                                 ],
+                                                  "relationship":  "supports",
+                                                  "vesselContext":  "Who gets called â€” DPA, flag state, class society, insurer â€” during a cyber incident should be pre-defined exactly like any other emergency contact tree, not improvised."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Respond\" step",
+                                                     "relationship":  "supports"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "RS.AN-03",
+                     "function":  "Respond",
+                     "title":  "Analysis is performed to determine what took place during an incident and its root cause",
+                     "ism":  [
+                                 "Section 9 (Non-Conformity Reporting)",
+                                 "Section 12 (Company Verification, Review and Evaluation)"
+                             ],
+                     "msc":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Respond\" step",
+                     "relationship":  "supports",
+                     "vesselContext":  "Post-incident cyber analysis should feed the same non-conformity trend review the Company already conducts at management review, not a parallel unread IT report.",
+                     "gap":  false,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 9 (Non-Conformity Reporting)",
+                                                                     "Section 12 (Company Verification, Review and Evaluation)"
+                                                                 ],
+                                                  "relationship":  "supports",
+                                                  "vesselContext":  "Post-incident cyber analysis should feed the same non-conformity trend review the Company already conducts at management review, not a parallel unread IT report."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "MSC-FAL.1/Circ.3/Rev.3 Section 3 â€” \"Respond\" step",
+                                                     "relationship":  "supports"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "RC.RP-01",
+                     "function":  "Recover",
+                     "title":  "The recovery portion of the incident response plan is executed once initiated",
+                     "ism":  [
+                                 "Section 8 (Emergency Preparedness) â€” weak coverage"
+                             ],
+                     "msc":  "No dedicated MSC-FAL.1/Circ.3 clause â€” \"Recover\" is the least-developed step in current maritime guidance",
+                     "relationship":  "partial â€” clearest gap in the whole crosswalk",
+                     "vesselContext":  "Backup-ECDIS and OT-rebuild procedures are rarely drilled with the rigor of lifeboat or fire drills. CSF 2.0\u0027s Recover function is the single biggest gap versus current ISM/IMO practice.",
+                     "gap":  true,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 8 (Emergency Preparedness) â€” weak coverage"
+                                                                 ],
+                                                  "relationship":  "partial â€” clearest gap in the whole crosswalk",
+                                                  "vesselContext":  "Backup-ECDIS and OT-rebuild procedures are rarely drilled with the rigor of lifeboat or fire drills. CSF 2.0\u0027s Recover function is the single biggest gap versus current ISM/IMO practice."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "No dedicated MSC-FAL.1/Circ.3 clause â€” \"Recover\" is the least-developed step in current maritime guidance",
+                                                     "relationship":  "partial â€” clearest gap in the whole crosswalk"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 },
+                 {
+                     "id":  "RC.CO-03",
+                     "function":  "Recover",
+                     "title":  "Recovery activities and progress are communicated to internal and external stakeholders",
+                     "ism":  [
+                                 "Section 8 (Emergency Preparedness)",
+                                 "Section 3 (Company Responsibilities)"
+                             ],
+                     "msc":  "No dedicated MSC-FAL.1/Circ.3 clause",
+                     "relationship":  "partial",
+                     "vesselContext":  "Stakeholder communication during recovery (charterers, flag state, class, insurer) needs the same discipline as initial incident notification â€” often forgotten once the immediate emergency passes.",
+                     "gap":  true,
+                     "mappings":  {
+                                      "ism":  {
+                                                  "references":  [
+                                                                     "Section 8 (Emergency Preparedness)",
+                                                                     "Section 3 (Company Responsibilities)"
+                                                                 ],
+                                                  "relationship":  "partial",
+                                                  "vesselContext":  "Stakeholder communication during recovery (charterers, flag state, class, insurer) needs the same discipline as initial incident notification â€” often forgotten once the immediate emergency passes."
+                                              },
+                                      "msc428":  {
+                                                     "references":  "No dedicated MSC-FAL.1/Circ.3 clause",
+                                                     "relationship":  "partial"
+                                                 },
+                                      "mscFalRev3":  {
+                                                         "references":  null
+                                                     },
+                                      "bimco":  {
+                                                    "references":  null
+                                                }
+                                  }
+                 }
+             ]
 }
