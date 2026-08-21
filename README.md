@@ -28,11 +28,16 @@ is an interpretation cross-referencing the cited primary sources; verify against
 any row for an actual SMS document, DOC audit, or class review. Standards revise — check the "last verified" date
 in the app before citing.
 
-## Scope (v0.1)
+## Scope (v0.2)
 
 21 NIST CSF 2.0 subcategories across all six functions (Govern, Identify, Protect, Detect, Respond, Recover),
-mapped against ISM Code sections and the two governing IMO instruments. BIMCO Guidelines, IACS UR E26/E27, and
-OCIMF TMSA3/SIRE 2.0 are deliberately out of scope for v0.1 — see [Roadmap](#roadmap).
+mapped against ISM Code sections, the two governing IMO instruments, and BIMCO's _Guidelines on Cyber Security
+Onboard Ships_ (5th Ed, Nov 2024). IACS UR E26/E27 and OCIMF TMSA3/SIRE 2.0 are deliberately out of scope for
+now — see [Roadmap](#roadmap).
+
+The BIMCO mappings cite guidance by section name (e.g. "Identify vulnerabilities", "Assess risk exposure")
+rather than clause numbers, pending a verification pass against the current PDF — check the "last verified"
+date before citing a BIMCO row.
 
 ## Running locally
 
@@ -51,7 +56,7 @@ welcome via issue or PR — cite your source.
 
 ## Roadmap
 
-- [ ] BIMCO Guidelines 5th Ed as an additional target framework
+- [x] BIMCO Guidelines 5th Ed as an additional target framework
 - [ ] IACS UR E26 / UR E27 (newbuild-specific requirements)
 - [ ] OCIMF TMSA3 / SIRE 2.0
 - [ ] Self-assessment / gap-scoring mode

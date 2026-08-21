@@ -145,6 +145,54 @@ main.wrap {
   cursor: pointer;
 }
 
+.framework-controls {
+  display: flex;
+  flex-basis: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.framework-controls-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-right: 2px;
+}
+
+.framework-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    color 0.15s;
+}
+
+.framework-toggle:hover {
+  border-color: var(--accent);
+}
+
+.framework-toggle:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.framework-toggle input[type="checkbox"] {
+  accent-color: var(--accent);
+  margin: 0;
+  cursor: pointer;
+}
+
 #exportCsv {
   padding: 8px 14px;
   border-radius: var(--radius);

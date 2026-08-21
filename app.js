@@ -25,12 +25,15 @@ async function init() {
   const frameworks =
     data.meta && data.meta.frameworks && data.meta.frameworks.registry
       ? data.meta.frameworks.registry
-      : (data.meta && data.meta.frameworks && data.meta.frameworks.targets) || [];
+      : (data.meta && data.meta.frameworks && data.meta.frameworks.targets) ||
+        [];
   // Expose for future UI use
   window.crosswalkFrameworks = frameworks;
 
   // By default select all target frameworks in the registry
-  selectedFrameworks = frameworks.filter(f => f.type === 'target').map(f => f.id);
+  selectedFrameworks = frameworks
+    .filter((f) => f.type === "target")
+    .map((f) => f.id);
 
   allRows = data.rows;
   renderPills();
@@ -49,39 +52,44 @@ async function init() {
 }
 
 function renderFrameworkControls() {
-  const containerId = 'frameworkControls';
+  const containerId = "frameworkControls";
   let container = document.getElementById(containerId);
   if (!container) {
     // create container next to functionPills
-    const controls = document.querySelector('.controls');
-    container = document.createElement('div');
+    const controls = document.querySelector(".controls");
+    container = document.createElement("div");
     container.id = containerId;
-    container.className = 'framework-controls';
-    container.setAttribute('role','group');
-    container.setAttribute('aria-label','Select target frameworks');
+    container.className = "framework-controls";
+    container.setAttribute("role", "group");
+    container.setAttribute("aria-label", "Select target frameworks");
     // insert before export button
-    const exportBtn = document.getElementById('exportCsv');
+    const exportBtn = document.getElementById("exportCsv");
     controls.insertBefore(container, exportBtn);
   }
-  container.innerHTML = '';
+  container.innerHTML = "";
 
-  (window.crosswalkFrameworks || []).forEach(f => {
-    const label = document.createElement('label');
-    label.className = 'framework-toggle';
-    const cb = document.createElement('input');
-    cb.type = 'checkbox';
+  const caption = document.createElement("span");
+  caption.className = "framework-controls-label";
+  caption.textContent = "Frameworks:";
+  container.appendChild(caption);
+
+  (window.crosswalkFrameworks || []).forEach((f) => {
+    const label = document.createElement("label");
+    label.className = "framework-toggle";
+    const cb = document.createElement("input");
+    cb.type = "checkbox";
     cb.value = f.id;
     cb.checked = selectedFrameworks.includes(f.id);
-    cb.addEventListener('change', (e) => {
+    cb.addEventListener("change", (e) => {
       if (e.target.checked) {
         selectedFrameworks.push(f.id);
       } else {
-        selectedFrameworks = selectedFrameworks.filter(id => id !== f.id);
+        selectedFrameworks = selectedFrameworks.filter((id) => id !== f.id);
       }
       render();
     });
     label.appendChild(cb);
-    label.appendChild(document.createTextNode(' ' + f.name));
+    label.appendChild(document.createTextNode(" " + f.name));
     container.appendChild(label);
   });
 }
@@ -118,11 +126,7 @@ function filteredRows() {
     if (activeFunction && row.function !== activeFunction) return false;
     if (gapOnly && !row.gap) return false;
     if (searchTerm) {
-      const haystackParts = [
-        row.id,
-        row.title,
-        row.function,
-      ];
+      const haystackParts = [row.id, row.title, row.function];
 
       // Legacy fields
       if (row.ism) haystackParts.push(...row.ism);
@@ -135,7 +139,8 @@ function filteredRows() {
           const m = row.mappings[k];
           if (!m) return;
           if (m.references) {
-            if (Array.isArray(m.references)) haystackParts.push(...m.references);
+            if (Array.isArray(m.references))
+              haystackParts.push(...m.references);
             else haystackParts.push(m.references);
           }
           if (m.vesselContext) haystackParts.push(m.vesselContext);
@@ -157,17 +162,19 @@ function render() {
     `${rows.length} of ${allRows.length} subcategories`;
 
   // Build dynamic header based on selectedFrameworks
-  const thead = document.querySelector('#crosswalkTable thead');
+  const thead = document.querySelector("#crosswalkTable thead");
   const headerCells = [
     '<th scope="col">NIST CSF 2.0</th>',
-    '<th scope="col">Function</th>'
+    '<th scope="col">Function</th>',
   ];
-  (selectedFrameworks || []).forEach(id => {
-    const f = (window.crosswalkFrameworks || []).find(x => x.id === id);
-    headerCells.push(`<th scope="col">${escapeHtml((f && f.name) ? f.name : id)}</th>`);
+  (selectedFrameworks || []).forEach((id) => {
+    const f = (window.crosswalkFrameworks || []).find((x) => x.id === id);
+    headerCells.push(
+      `<th scope="col">${escapeHtml(f && f.name ? f.name : id)}</th>`,
+    );
   });
   headerCells.push('<th scope="col">On the vessel</th>');
-  thead.innerHTML = `<tr>${headerCells.join('')}</tr>`;
+  thead.innerHTML = `<tr>${headerCells.join("")}</tr>`;
 
   if (!rows.length) {
     const colspan = 2 + (selectedFrameworks || []).length + 1;
@@ -184,26 +191,35 @@ function render() {
           <div class="csf-title">${escapeHtml(row.title)}</div>
         </td>
       `);
-      cols.push(`<td><span class="func-badge">${escapeHtml(row.function)}</span></td>`);
+      cols.push(
+        `<td><span class="func-badge">${escapeHtml(row.function)}</span></td>`,
+      );
 
       // framework-specific columns
-      (selectedFrameworks || []).forEach(id => {
+      (selectedFrameworks || []).forEach((id) => {
         const m = row.mappings && row.mappings[id];
-        let content = '';
+        let content = "";
         if (m && m.references) {
-          if (Array.isArray(m.references)) content = `<ul class="ism-list">${m.references.map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul>`;
+          if (Array.isArray(m.references))
+            content = `<ul class="ism-list">${m.references.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul>`;
           else content = escapeHtml(m.references);
         }
-        if (m && m.relationship) content += `<div class="mapping-relationship">${escapeHtml(m.relationship)}</div>`;
-        if (row.gap && id === 'ism') content += ' ' + (row.gap ? '<span class="gap-badge">gap</span>' : '');
+        if (m && m.relationship)
+          content += `<div class="mapping-relationship">${escapeHtml(m.relationship)}</div>`;
+        if (row.gap && id === "ism")
+          content +=
+            " " + (row.gap ? '<span class="gap-badge">gap</span>' : "");
         cols.push(`<td>${content}</td>`);
       });
 
       // vessel context (prefer mapping.ism.vesselContext)
-      const vesselCtx = (row.mappings && row.mappings.ism && row.mappings.ism.vesselContext) || row.vesselContext || '';
+      const vesselCtx =
+        (row.mappings && row.mappings.ism && row.mappings.ism.vesselContext) ||
+        row.vesselContext ||
+        "";
       cols.push(`<td>${escapeHtml(vesselCtx)}</td>`);
 
-      return `<tr>${cols.join('')}</tr>`;
+      return `<tr>${cols.join("")}</tr>`;
     })
     .join("");
 }
@@ -212,8 +228,8 @@ function exportCsv() {
   const rows = filteredRows();
 
   // Header: ID, Function, Title, then framework columns, Vessel context, Gap
-  const frameworkNames = (selectedFrameworks || []).map(id => {
-    const f = (window.crosswalkFrameworks || []).find(x => x.id === id);
+  const frameworkNames = (selectedFrameworks || []).map((id) => {
+    const f = (window.crosswalkFrameworks || []).find((x) => x.id === id);
     return f ? f.name : id;
   });
 
@@ -228,14 +244,17 @@ function exportCsv() {
   const lines = [header.map(csvEscape).join(",")];
 
   rows.forEach((row) => {
-    const frameworkCols = (selectedFrameworks || []).map(id => {
+    const frameworkCols = (selectedFrameworks || []).map((id) => {
       const m = row.mappings && row.mappings[id];
       if (!m || !m.references) return "";
       if (Array.isArray(m.references)) return m.references.join(" | ");
       return String(m.references);
     });
 
-    const vesselCtx = (row.mappings && row.mappings.ism && row.mappings.ism.vesselContext) || row.vesselContext || "";
+    const vesselCtx =
+      (row.mappings && row.mappings.ism && row.mappings.ism.vesselContext) ||
+      row.vesselContext ||
+      "";
 
     const line = [
       row.id,
