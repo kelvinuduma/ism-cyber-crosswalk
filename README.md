@@ -16,6 +16,7 @@ A row-per-subcategory mapping of NIST CSF 2.0 against:
 - The **ISM Code** (IMO Res. A.741(18), as amended) — which SMS section a control belongs in
 - **IMO MSC.428(98)** — the 2021 mandate requiring cyber risk in the SMS
 - **IMO MSC-FAL.1/Circ.3/Rev.3** (April 2025) — the guidance describing how
+- **BIMCO's Guidelines on Cyber Security Onboard Ships** (5th Ed, Nov 2024) — industry guidance from BIMCO, ICS, INTERCARGO, INTERTANKO, OCIMF et al.
 
 Each row also carries a plain-English "what this looks like on the vessel" note, and rows with no strong ISM
 equivalent are flagged as a **gap**, not smoothed over.
