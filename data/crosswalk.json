@@ -1,4 +1,4 @@
-﻿{
+{
   "meta": {
     "title": "ISM Code ↔ NIST CSF 2.0 Crosswalk",
     "version": "0.2.0",
@@ -75,6 +75,31 @@
           "references": "BIMCO Guidelines 5th Ed — Introduction / Annex 2 (Cyber risk management and the safety management system)",
           "relationship": "supports"
         }
+      },
+      "sourceTrace": {
+        "confidence": "high",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 1 (General — Safety and Environmental Policy)",
+              "Section 3 (Company Responsibilities and Authority)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC.428(98) — operative paragraph (mandate itself)"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — Introduction / Annex 2 (Cyber risk management and the safety management system)"
+            ]
+          }
+        ]
       }
     },
     {
@@ -109,6 +134,31 @@
           "references": "BIMCO Guidelines 5th Ed — risk assessment guidance ('Assess risk exposure') read with Annex 2 (SMS integration)",
           "relationship": "supports"
         }
+      },
+      "sourceTrace": {
+        "confidence": "high",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 1.4 (Safety Management objectives)",
+              "Section 3 (Company Responsibilities)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC.428(98) — mandate; MSC-FAL.1/Circ.3/Rev.3 Section 3 (five-step framework)"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — risk assessment guidance ('Assess risk exposure') read with Annex 2 (SMS integration)"
+            ]
+          }
+        ]
       }
     },
     {
@@ -141,6 +191,30 @@
           "references": "BIMCO Guidelines 5th Ed — third-party, contractor and equipment-manufacturer risk guidance",
           "relationship": "supports — stronger coverage here than ISM or MSC.428 alone"
         }
+      },
+      "sourceTrace": {
+        "confidence": "medium",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 3 (Company Responsibilities — extends to appointed ship managers/vendors)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "No direct MSC-FAL.1/Circ.3 clause; see IACS UR E27 (out of MVP scope)"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — third-party, contractor and equipment-manufacturer risk guidance"
+            ]
+          }
+        ]
       }
     },
     {
@@ -175,20 +249,49 @@
           "references": "BIMCO Guidelines 5th Ed — roles and responsibilities guidance (Company, Master, DPA, IT/OT)",
           "relationship": "supports"
         }
+      },
+      "sourceTrace": {
+        "confidence": "high",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 4 (Designated Person(s) Ashore)",
+              "Section 5 (Master's Responsibility and Authority)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC.428(98) — mandate places responsibility on the Company via ISM Section 4/5"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — roles and responsibilities guidance (Company, Master, DPA, IT/OT)"
+            ]
+          }
+        ]
       }
     },
     {
       "id": "ID.AM-01",
       "function": "Identify",
       "title": "Inventories of hardware managed by the organization are maintained",
-      "ism": ["Section 10 (Maintenance of the Ship and Equipment)"],
+      "ism": [
+        "Section 10 (Maintenance of the Ship and Equipment)"
+      ],
       "msc": "MSC-FAL.1/Circ.3/Rev.3 Annex — shore-side asset inventory (new in Rev.3)",
       "relationship": "supports",
       "vesselContext": "Extend the existing Planned Maintenance System (PMS) equipment register to cover OT/IT — ECDIS, VSAT modem, engine control unit — not just mechanical plant.",
       "gap": false,
       "mappings": {
         "ism": {
-          "references": ["Section 10 (Maintenance of the Ship and Equipment)"],
+          "references": [
+            "Section 10 (Maintenance of the Ship and Equipment)"
+          ],
           "relationship": "supports",
           "vesselContext": "Extend the existing Planned Maintenance System (PMS) equipment register to cover OT/IT — ECDIS, VSAT modem, engine control unit — not just mechanical plant."
         },
@@ -203,20 +306,48 @@
           "references": "BIMCO Guidelines 5th Ed — 'Identify vulnerabilities' section (network and asset mapping)",
           "relationship": "supports"
         }
+      },
+      "sourceTrace": {
+        "confidence": "high",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 10 (Maintenance of the Ship and Equipment)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC-FAL.1/Circ.3/Rev.3 Annex — shore-side asset inventory (new in Rev.3)"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — 'Identify vulnerabilities' section (network and asset mapping)"
+            ]
+          }
+        ]
       }
     },
     {
       "id": "ID.AM-02",
       "function": "Identify",
       "title": "Inventories of software, services, and systems managed by the organization are maintained",
-      "ism": ["Section 10 (Maintenance of the Ship and Equipment)"],
+      "ism": [
+        "Section 10 (Maintenance of the Ship and Equipment)"
+      ],
       "msc": "MSC-FAL.1/Circ.3/Rev.3 Annex — shore-side asset inventory (new in Rev.3)",
       "relationship": "supports",
       "vesselContext": "Firmware versions and network services (remote-access clients, AIS transponder software) need their own register — most PMS systems only track hardware, not software/service state.",
       "gap": false,
       "mappings": {
         "ism": {
-          "references": ["Section 10 (Maintenance of the Ship and Equipment)"],
+          "references": [
+            "Section 10 (Maintenance of the Ship and Equipment)"
+          ],
           "relationship": "supports",
           "vesselContext": "Firmware versions and network services (remote-access clients, AIS transponder software) need their own register — most PMS systems only track hardware, not software/service state."
         },
@@ -231,6 +362,30 @@
           "references": "BIMCO Guidelines 5th Ed — 'Identify vulnerabilities' section (network and asset mapping)",
           "relationship": "supports"
         }
+      },
+      "sourceTrace": {
+        "confidence": "high",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 10 (Maintenance of the Ship and Equipment)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC-FAL.1/Circ.3/Rev.3 Annex — shore-side asset inventory (new in Rev.3)"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — 'Identify vulnerabilities' section (network and asset mapping)"
+            ]
+          }
+        ]
       }
     },
     {
@@ -263,20 +418,48 @@
           "references": "BIMCO Guidelines 5th Ed — 'Identify vulnerabilities' section, dedicated to this exact activity",
           "relationship": "supports — closes the gap ISM and MSC.428 leave open"
         }
+      },
+      "sourceTrace": {
+        "confidence": "medium",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 9 (Reports and Analysis of Non-Conformities — by extension, after the fact)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Identify\" step (risk assessment)"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — 'Identify vulnerabilities' section, dedicated to this exact activity"
+            ]
+          }
+        ]
       }
     },
     {
       "id": "ID.RA-05",
       "function": "Identify",
       "title": "Threats, vulnerabilities, likelihoods, and impacts are used to understand risk and inform prioritization",
-      "ism": ["Section 1 (risk-based Safety Management approach)"],
+      "ism": [
+        "Section 1 (risk-based Safety Management approach)"
+      ],
       "msc": "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Identify\" step",
       "relationship": "supports",
       "vesselContext": "The cyber risk assessment should feed the same risk register as other operational hazards (grounding, fire, collision) — not sit in a separate standalone \"IT risk\" document.",
       "gap": false,
       "mappings": {
         "ism": {
-          "references": ["Section 1 (risk-based Safety Management approach)"],
+          "references": [
+            "Section 1 (risk-based Safety Management approach)"
+          ],
           "relationship": "supports",
           "vesselContext": "The cyber risk assessment should feed the same risk register as other operational hazards (grounding, fire, collision) — not sit in a separate standalone \"IT risk\" document."
         },
@@ -291,20 +474,48 @@
           "references": "BIMCO Guidelines 5th Ed — 'Identify threats' and 'Assess risk exposure' sections",
           "relationship": "supports"
         }
+      },
+      "sourceTrace": {
+        "confidence": "high",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 1 (risk-based Safety Management approach)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Identify\" step"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — 'Identify threats' and 'Assess risk exposure' sections"
+            ]
+          }
+        ]
       }
     },
     {
       "id": "PR.AA-01",
       "function": "Protect",
       "title": "Identities and credentials for authorized users, services, and hardware are managed",
-      "ism": ["Section 7 (Shipboard Operations)"],
+      "ism": [
+        "Section 7 (Shipboard Operations)"
+      ],
       "msc": "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Protect\" step (access management)",
       "relationship": "supports",
       "vesselContext": "Access-control procedures for OT consoles (ECDIS, engine-control HMI) belong in the same shipboard operating procedures as other critical equipment, with shared-account use named as a specific non-conformity risk.",
       "gap": false,
       "mappings": {
         "ism": {
-          "references": ["Section 7 (Shipboard Operations)"],
+          "references": [
+            "Section 7 (Shipboard Operations)"
+          ],
           "relationship": "supports",
           "vesselContext": "Access-control procedures for OT consoles (ECDIS, engine-control HMI) belong in the same shipboard operating procedures as other critical equipment, with shared-account use named as a specific non-conformity risk."
         },
@@ -319,13 +530,40 @@
           "references": "BIMCO Guidelines 5th Ed — technical/procedural protection measures (identity and access control)",
           "relationship": "supports"
         }
+      },
+      "sourceTrace": {
+        "confidence": "high",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 7 (Shipboard Operations)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Protect\" step (access management)"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — technical/procedural protection measures (identity and access control)"
+            ]
+          }
+        ]
       }
     },
     {
       "id": "PR.AA-05",
       "function": "Protect",
       "title": "Access permissions, entitlements, and authorizations are defined and enforced",
-      "ism": ["Section 7 (Shipboard Operations)", "Section 11 (Documentation)"],
+      "ism": [
+        "Section 7 (Shipboard Operations)",
+        "Section 11 (Documentation)"
+      ],
       "msc": "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Protect\" step",
       "relationship": "supports",
       "vesselContext": "Who may log into the VSAT modem or ECDIS admin account should be a documented, version-controlled procedure — like any other SMS-controlled document.",
@@ -350,6 +588,31 @@
           "references": "BIMCO Guidelines 5th Ed — technical/procedural protection measures (access permissions)",
           "relationship": "supports"
         }
+      },
+      "sourceTrace": {
+        "confidence": "high",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 7 (Shipboard Operations)",
+              "Section 11 (Documentation)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Protect\" step"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — technical/procedural protection measures (access permissions)"
+            ]
+          }
+        ]
       }
     },
     {
@@ -382,20 +645,48 @@
           "references": "BIMCO Guidelines 5th Ed — protection measures (data and backup protection); no dedicated data-at-rest clause",
           "relationship": "partial — implied under general protection guidance"
         }
+      },
+      "sourceTrace": {
+        "confidence": "medium",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 11 (Documentation — control of documented information)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "No dedicated MSC-FAL.1/Circ.3 clause — implied under \"Protect\""
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — protection measures (data and backup protection); no dedicated data-at-rest clause"
+            ]
+          }
+        ]
       }
     },
     {
       "id": "PR.PS-01",
       "function": "Protect",
       "title": "Configuration management practices are established and applied",
-      "ism": ["Section 10 (Maintenance of the Ship and Equipment)"],
+      "ism": [
+        "Section 10 (Maintenance of the Ship and Equipment)"
+      ],
       "msc": "No dedicated MSC-FAL.1/Circ.3 clause — implied under \"Protect\"",
       "relationship": "supports",
       "vesselContext": "Configuration baselines for OT systems (firewall rules, USB port lockdown) fit the same \"maintained in a good state of repair\" logic Section 10 already applies to machinery.",
       "gap": false,
       "mappings": {
         "ism": {
-          "references": ["Section 10 (Maintenance of the Ship and Equipment)"],
+          "references": [
+            "Section 10 (Maintenance of the Ship and Equipment)"
+          ],
           "relationship": "supports",
           "vesselContext": "Configuration baselines for OT systems (firewall rules, USB port lockdown) fit the same \"maintained in a good state of repair\" logic Section 10 already applies to machinery."
         },
@@ -410,20 +701,48 @@
           "references": "BIMCO Guidelines 5th Ed — technical/procedural protection measures (configuration and patch management, removable media control)",
           "relationship": "supports"
         }
+      },
+      "sourceTrace": {
+        "confidence": "high",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 10 (Maintenance of the Ship and Equipment)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "No dedicated MSC-FAL.1/Circ.3 clause — implied under \"Protect\""
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — technical/procedural protection measures (configuration and patch management, removable media control)"
+            ]
+          }
+        ]
       }
     },
     {
       "id": "PR.AT-01",
       "function": "Protect",
       "title": "Personnel are provided with cybersecurity awareness and training",
-      "ism": ["Section 6 (Resources and Personnel)"],
+      "ism": [
+        "Section 6 (Resources and Personnel)"
+      ],
       "msc": "MSC.428(98) does not mandate crew training explicitly — a named gap",
       "relationship": "partial — general competency clause only",
       "vesselContext": "Cyber-awareness training for crew and officers has a natural home in Section 6, but MSC.428(98) never mandates it directly — companies must read it into the general competency requirement themselves.",
       "gap": true,
       "mappings": {
         "ism": {
-          "references": ["Section 6 (Resources and Personnel)"],
+          "references": [
+            "Section 6 (Resources and Personnel)"
+          ],
           "relationship": "partial — general competency clause only",
           "vesselContext": "Cyber-awareness training for crew and officers has a natural home in Section 6, but MSC.428(98) never mandates it directly — companies must read it into the general competency requirement themselves."
         },
@@ -438,6 +757,30 @@
           "references": "BIMCO Guidelines 5th Ed — dedicated crew and shore-staff awareness/training guidance",
           "relationship": "supports — closes the gap MSC.428(98) leaves open"
         }
+      },
+      "sourceTrace": {
+        "confidence": "medium",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 6 (Resources and Personnel)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC.428(98) does not mandate crew training explicitly — a named gap"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — dedicated crew and shore-staff awareness/training guidance"
+            ]
+          }
+        ]
       }
     },
     {
@@ -472,6 +815,31 @@
           "references": "BIMCO Guidelines 5th Ed — protection and detection measures (network monitoring)",
           "relationship": "supports"
         }
+      },
+      "sourceTrace": {
+        "confidence": "high",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 7 (Shipboard Operations)",
+              "Section 9 (Non-Conformity Reporting)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Detect\" step"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — protection and detection measures (network monitoring)"
+            ]
+          }
+        ]
       }
     },
     {
@@ -506,13 +874,40 @@
           "references": "BIMCO Guidelines 5th Ed — protection and detection measures (system and runtime monitoring)",
           "relationship": "supports"
         }
+      },
+      "sourceTrace": {
+        "confidence": "high",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 10 (Maintenance of the Ship and Equipment)",
+              "Section 9 (Non-Conformity Reporting)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Detect\" step"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — protection and detection measures (system and runtime monitoring)"
+            ]
+          }
+        ]
       }
     },
     {
       "id": "DE.AE-02",
       "function": "Detect",
       "title": "Potentially adverse events are analyzed to better understand associated activities",
-      "ism": ["Section 9 (Reports and Analysis of Non-Conformities)"],
+      "ism": [
+        "Section 9 (Reports and Analysis of Non-Conformities)"
+      ],
       "msc": "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Detect\" step",
       "relationship": "supports",
       "vesselContext": "Root-cause analysis of a cyber anomaly should follow the same investigation discipline as any other hazardous occurrence, feeding the same trend log.",
@@ -536,20 +931,48 @@
           "references": "BIMCO Guidelines 5th Ed — incident response guidance (event analysis)",
           "relationship": "supports"
         }
+      },
+      "sourceTrace": {
+        "confidence": "high",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 9 (Reports and Analysis of Non-Conformities)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Detect\" step"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — incident response guidance (event analysis)"
+            ]
+          }
+        ]
       }
     },
     {
       "id": "RS.MA-01",
       "function": "Respond",
       "title": "The incident response plan is executed once an incident is declared",
-      "ism": ["Section 8 (Emergency Preparedness)"],
+      "ism": [
+        "Section 8 (Emergency Preparedness)"
+      ],
       "msc": "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Respond\" step",
       "relationship": "supports",
       "vesselContext": "A cyber incident should trigger the same drilled emergency-response muscle memory as fire or flooding — the \"Respond\" step, operationalized through existing drill discipline rather than a separate cyber-only plan nobody rehearses.",
       "gap": false,
       "mappings": {
         "ism": {
-          "references": ["Section 8 (Emergency Preparedness)"],
+          "references": [
+            "Section 8 (Emergency Preparedness)"
+          ],
           "relationship": "supports",
           "vesselContext": "A cyber incident should trigger the same drilled emergency-response muscle memory as fire or flooding — the \"Respond\" step, operationalized through existing drill discipline rather than a separate cyber-only plan nobody rehearses."
         },
@@ -564,6 +987,30 @@
           "references": "BIMCO Guidelines 5th Ed — 'Respond to and recover from cyber security incidents' section",
           "relationship": "supports"
         }
+      },
+      "sourceTrace": {
+        "confidence": "high",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 8 (Emergency Preparedness)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Respond\" step"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — 'Respond to and recover from cyber security incidents' section"
+            ]
+          }
+        ]
       }
     },
     {
@@ -598,6 +1045,31 @@
           "references": "BIMCO Guidelines 5th Ed — incident response guidance (stakeholder notification)",
           "relationship": "supports"
         }
+      },
+      "sourceTrace": {
+        "confidence": "high",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 8 (Emergency Preparedness)",
+              "Section 3 (Company Responsibilities — reporting to flag state/class)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Respond\" step"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — incident response guidance (stakeholder notification)"
+            ]
+          }
+        ]
       }
     },
     {
@@ -632,13 +1104,40 @@
           "references": "BIMCO Guidelines 5th Ed — incident response guidance (post-incident root-cause analysis)",
           "relationship": "supports"
         }
+      },
+      "sourceTrace": {
+        "confidence": "high",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 9 (Non-Conformity Reporting)",
+              "Section 12 (Company Verification, Review and Evaluation)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "MSC-FAL.1/Circ.3/Rev.3 Section 3 — \"Respond\" step"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — incident response guidance (post-incident root-cause analysis)"
+            ]
+          }
+        ]
       }
     },
     {
       "id": "RC.RP-01",
       "function": "Recover",
       "title": "The recovery portion of the incident response plan is executed once initiated",
-      "ism": ["Section 8 (Emergency Preparedness) — weak coverage"],
+      "ism": [
+        "Section 8 (Emergency Preparedness) — weak coverage"
+      ],
       "msc": "No dedicated MSC-FAL.1/Circ.3 clause — \"Recover\" is the least-developed step in current maritime guidance",
       "relationship": "partial — clearest gap in the whole crosswalk",
       "vesselContext": "Backup-ECDIS and OT-rebuild procedures are rarely drilled with the rigor of lifeboat or fire drills. CSF 2.0's Recover function is the single biggest gap versus current ISM/IMO practice.",
@@ -662,6 +1161,30 @@
           "references": "BIMCO Guidelines 5th Ed — 'Respond to and recover from cyber security incidents' section (recovery half)",
           "relationship": "supports — closes the clearest ISM/MSC-FAL gap in this crosswalk"
         }
+      },
+      "sourceTrace": {
+        "confidence": "medium",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 8 (Emergency Preparedness) — weak coverage"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "No dedicated MSC-FAL.1/Circ.3 clause — \"Recover\" is the least-developed step in current maritime guidance"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — 'Respond to and recover from cyber security incidents' section (recovery half)"
+            ]
+          }
+        ]
       }
     },
     {
@@ -696,6 +1219,31 @@
           "references": "BIMCO Guidelines 5th Ed — incident response guidance (stakeholder communication); no dedicated recovery-communications clause",
           "relationship": "partial — general guidance, not a dedicated recovery-communications clause"
         }
+      },
+      "sourceTrace": {
+        "confidence": "medium",
+        "lastReviewed": "2026-07-26",
+        "evidence": [
+          {
+            "source": "ISM Code",
+            "references": [
+              "Section 8 (Emergency Preparedness)",
+              "Section 3 (Company Responsibilities)"
+            ]
+          },
+          {
+            "source": "IMO MSC.428(98)",
+            "references": [
+              "No dedicated MSC-FAL.1/Circ.3 clause"
+            ]
+          },
+          {
+            "source": "BIMCO Guidelines",
+            "references": [
+              "BIMCO Guidelines 5th Ed — incident response guidance (stakeholder communication); no dedicated recovery-communications clause"
+            ]
+          }
+        ]
       }
     }
   ]

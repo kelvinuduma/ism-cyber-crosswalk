@@ -12,6 +12,25 @@ let activeFunction = null;
 let gapOnly = false;
 let searchTerm = "";
 let selectedFrameworks = [];
+let defaultTargetFrameworkIds = [];
+
+function syncUrlState() {
+  const params = new URLSearchParams();
+
+  if (searchTerm) params.set("q", searchTerm);
+  if (activeFunction) params.set("function", activeFunction);
+  if (gapOnly) params.set("gapOnly", "true");
+  if (
+    selectedFrameworks.length &&
+    selectedFrameworks.length !== defaultTargetFrameworkIds.length
+  ) {
+    params.set("frameworks", selectedFrameworks.join(","));
+  }
+
+  const query = params.toString();
+  const url = `${window.location.pathname}${query ? `?${query}` : ""}`;
+  history.replaceState({}, "", url);
+}
 
 async function init() {
   const res = await fetch("data/crosswalk.json");
@@ -30,24 +49,59 @@ async function init() {
   // Expose for future UI use
   window.crosswalkFrameworks = frameworks;
 
-  // By default select all target frameworks in the registry
-  selectedFrameworks = frameworks
+  defaultTargetFrameworkIds = frameworks
     .filter((f) => f.type === "target")
     .map((f) => f.id);
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const functionParam = urlParams.get("function");
+  activeFunction = FUNCTIONS.includes(functionParam) ? functionParam : null;
+  gapOnly = urlParams.get("gapOnly") === "true" || urlParams.get("gapOnly") === "1";
+  searchTerm = (urlParams.get("q") || "").trim().toLowerCase();
+
+  const frameworkParam = urlParams.get("frameworks");
+  if (frameworkParam) {
+    const requested = frameworkParam
+      .split(",")
+      .map((id) => id.trim())
+      .filter(Boolean);
+    selectedFrameworks = requested.filter((id) => defaultTargetFrameworkIds.includes(id));
+  }
+
+  if (!selectedFrameworks.length) {
+    selectedFrameworks = [...defaultTargetFrameworkIds];
+  }
 
   allRows = data.rows;
   renderPills();
   renderFrameworkControls();
   render();
 
-  document.getElementById("searchBox").addEventListener("input", (e) => {
+  const searchBox = document.getElementById("searchBox");
+  searchBox.value = searchTerm;
+  searchBox.addEventListener("input", (e) => {
     searchTerm = e.target.value.trim().toLowerCase();
     render();
   });
-  document.getElementById("gapOnly").addEventListener("change", (e) => {
+
+  const gapToggle = document.getElementById("gapOnly");
+  gapToggle.checked = gapOnly;
+  gapToggle.addEventListener("change", (e) => {
     gapOnly = e.target.checked;
     render();
   });
+
+  const resetFiltersButton = document.getElementById("resetFilters");
+  if (resetFiltersButton) {
+    resetFiltersButton.addEventListener("click", () => {
+      activeFunction = null;
+      gapOnly = false;
+      searchTerm = "";
+      selectedFrameworks = [...defaultTargetFrameworkIds];
+      render();
+    });
+  }
+
   document.getElementById("exportCsv").addEventListener("click", exportCsv);
 }
 
@@ -158,8 +212,20 @@ function filteredRows() {
 function render() {
   const rows = filteredRows();
   const tbody = document.getElementById("tableBody");
-  document.getElementById("rowCount").textContent =
-    `${rows.length} of ${allRows.length} subcategories`;
+  const rowCountElement = document.getElementById("rowCount");
+  rowCountElement.textContent = `${rows.length} of ${allRows.length} subcategories`;
+  rowCountElement.setAttribute("aria-live", "polite");
+  syncUrlState();
+
+  const searchBox = document.getElementById("searchBox");
+  if (searchBox && searchBox.value !== searchTerm) {
+    searchBox.value = searchTerm;
+  }
+
+  const gapToggle = document.getElementById("gapOnly");
+  if (gapToggle && gapToggle.checked !== gapOnly) {
+    gapToggle.checked = gapOnly;
+  }
 
   // Build dynamic header based on selectedFrameworks
   const thead = document.querySelector("#crosswalkTable thead");
@@ -227,7 +293,6 @@ function render() {
 function exportCsv() {
   const rows = filteredRows();
 
-  // Header: ID, Function, Title, then framework columns, Vessel context, Gap
   const frameworkNames = (selectedFrameworks || []).map((id) => {
     const f = (window.crosswalkFrameworks || []).find((x) => x.id === id);
     return f ? f.name : id;
@@ -237,18 +302,25 @@ function exportCsv() {
     "ID",
     "Function",
     "Title",
-    ...frameworkNames,
+    ...frameworkNames.flatMap((name) => [`${name} reference`, `${name} relationship`]),
     "On the vessel",
     "Gap",
   ];
   const lines = [header.map(csvEscape).join(",")];
 
   rows.forEach((row) => {
-    const frameworkCols = (selectedFrameworks || []).map((id) => {
+    const frameworkCols = (selectedFrameworks || []).flatMap((id) => {
       const m = row.mappings && row.mappings[id];
-      if (!m || !m.references) return "";
-      if (Array.isArray(m.references)) return m.references.join(" | ");
-      return String(m.references);
+      let reference = "";
+      let relationship = "";
+
+      if (m) {
+        if (Array.isArray(m.references)) reference = m.references.join(" | ");
+        else if (m.references) reference = String(m.references);
+        if (m.relationship) relationship = String(m.relationship);
+      }
+
+      return [reference, relationship];
     });
 
     const vesselCtx =

@@ -1,0 +1,10 @@
+{
+  "name": "ism-cyber-crosswalk",
+  "description": "Interactive crosswalk between NIST CSF 2.0 and maritime cyber risk management under the ISM Code and IMO guidance.",
+  "private": true,
+  "version": "0.2.0",
+  "scripts": {
+    "validate": "node scripts/validate-crosswalk.js",
+    "serve": "python -m http.server 8000"
+  }
+}

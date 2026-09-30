@@ -42,18 +42,73 @@ date before citing a BIMCO row.
 
 ## Running locally
 
-No build step. Any static file server works:
+No build step. Use the bundled scripts for a consistent local workflow:
+
+```bash
+npm run validate
+npm run serve
+# then open http://localhost:8000
+```
+
+You can also use a plain static server if preferred:
 
 ```bash
 python -m http.server 8080
 # then open http://localhost:8080
 ```
 
+## Data validation and schema
+
+The project includes a lightweight validation script and a machine-readable schema to catch bad JSON and structural drift before publication:
+
+```bash
+npm run validate
+```
+
+Schema file: [`crosswalk.schema.json`](crosswalk.schema.json)
+
+This checks:
+- valid JSON syntax
+- unique subcategory IDs
+- valid CSF functions
+- valid framework keys in each row
+- required mapping object structure
+- boolean `gap` field values
+- row-level `sourceTrace` metadata
+
+## Contributing updates
+
+Contributions are welcome via issue or PR. For a dataset change, please:
+
+1. Cite the relevant source text or clause.
+2. Explain the interpretation in plain language.
+3. Update the row's relationship/gap status only if the evidence supports it.
+4. Validate before opening the PR:
+
+```bash
+npm run validate
+```
+
+If you are changing a mapping or adding a new subcategory, include the source reference, the rationale, and a brief note on any practical vessel example.
+
+## Contributor checklist
+
+Before submitting a PR, confirm all of the following:
+
+- the row includes a valid `id`, `function`, `title`, and `mappings` object
+- each mapping references the exact source clause or guidance title
+- the `gap` field matches the evidence; do not convert a gap into a support case without a direct mapping
+- the practical vessel example is plain English and consistent with the source text
+- the data still passes:
+
+```bash
+npm run validate
+```
+
 ## Data
 
 The full dataset lives in [`data/crosswalk.json`](data/crosswalk.json) — one object per subcategory, with the ISM
-mapping, the relevant MSC.428(98)/MSC-FAL.1 clause, a vessel-context note, and a `gap` flag. Contributions/corrections
-welcome via issue or PR — cite your source.
+mapping, the relevant MSC.428(98)/MSC-FAL.1 clause, a vessel-context note, and a `gap` flag.
 
 ## Roadmap
 

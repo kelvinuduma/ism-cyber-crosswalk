@@ -193,6 +193,7 @@ main.wrap {
   cursor: pointer;
 }
 
+#resetFilters,
 #exportCsv {
   padding: 8px 14px;
   border-radius: var(--radius);
@@ -203,6 +204,11 @@ main.wrap {
   font-size: 0.88rem;
 }
 
+.secondary-button {
+  background: var(--code-bg);
+}
+
+#resetFilters:hover,
 #exportCsv:hover {
   border-color: var(--accent);
   color: var(--accent);
@@ -212,6 +218,75 @@ main.wrap {
   margin-left: auto;
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+button:focus-visible,
+input:focus-visible,
+label:focus-within {
+  outline: 3px solid rgba(29, 92, 138, 0.35);
+  outline-offset: 2px;
+}
+
+.status-pill {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+}
+
+.status-supports {
+  background: rgba(58, 136, 124, 0.12);
+  color: var(--teal);
+}
+
+.status-partial {
+  background: rgba(29, 92, 138, 0.12);
+  color: var(--accent);
+}
+
+.status-gap {
+  background: var(--gap-soft);
+  color: var(--gap);
+}
+
+.legend,
+.methodology {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin-bottom: 20px;
+}
+
+.legend h2,
+.methodology h2 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
+.legend-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  color: var(--text-muted);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.methodology p {
+  margin: 0 0 10px;
+  color: var(--text-muted);
+}
+
+.methodology p:last-child {
+  margin-bottom: 0;
 }
 
 .table-wrap {
@@ -234,6 +309,7 @@ td {
   border-bottom: 1px solid var(--border);
   vertical-align: top;
   font-size: 0.9rem;
+  word-break: break-word;
 }
 
 thead th {
@@ -327,4 +403,35 @@ tbody tr:hover {
   padding: 20px 0 40px;
   color: var(--text-muted);
   font-size: 0.82rem;
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    padding: 0 14px;
+  }
+
+  main.wrap {
+    padding: 20px 14px 40px;
+  }
+
+  .controls {
+    align-items: stretch;
+  }
+
+  #searchBox,
+  #exportCsv,
+  .pill,
+  .framework-toggle,
+  .gap-toggle {
+    width: 100%;
+  }
+
+  .count {
+    margin-left: 0;
+  }
+
+  .legend-items {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
