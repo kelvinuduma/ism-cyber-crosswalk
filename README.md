@@ -1,5 +1,9 @@
 # ISM Code ↔ NIST CSF 2.0 Crosswalk
 
+[![Release](https://img.shields.io/github/v/release/kelvinuduma/ism-cyber-crosswalk?style=flat-square&color=0077B5)](https://github.com/kelvinuduma/ism-cyber-crosswalk/releases)
+[![Schema Validation](https://img.shields.io/github/actions/workflow/status/kelvinuduma/ism-cyber-crosswalk/validate-crosswalk.yml?label=schema%20validation&style=flat-square)](https://github.com/kelvinuduma/ism-cyber-crosswalk/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
+
 MSC-FAL.1/Circ.3/Rev.3 already tells DPAs and ship managers to structure maritime cyber risk management around a
 five-step framework that mirrors the NIST Cybersecurity Framework. What it doesn't do is say what each control
 looks like inside an actual ISM Code Safety Management System. This is a structured, citable crosswalk that closes
@@ -112,10 +116,33 @@ mapping, the relevant MSC.428(98)/MSC-FAL.1 clause, a vessel-context note, and a
 
 ## Roadmap
 
-- [x] BIMCO Guidelines 5th Ed as an additional target framework
-- [ ] IACS UR E26 / UR E27 (newbuild-specific requirements)
-- [ ] OCIMF TMSA3 / SIRE 2.0
-- [ ] Self-assessment / gap-scoring mode
+- [x] **BIMCO Guidelines 5th Ed** integration across all 21 CSF subcategories — `v0.2.0` (Completed)
+- [ ] **IACS UR E26 / UR E27** (Cyber resilience of on-board systems for newbuilds) — *Target: Q4 2026*
+- [ ] **OCIMF TMSA3 / SIRE 2.0** alignment for tanker operators — *Target: Q1 2027*
+- [ ] **Interactive self-assessment & gap-scoring engine** — *Target: Q2 2027*
+
+## Citation
+
+If you use this crosswalk dataset or tool in academic research, maritime audits, or policy documents, please cite it using [`CITATION.cff`](CITATION.cff) or the following format:
+
+### APA
+> Uduma, K. C. (2026). *ISM Code ↔ NIST CSF 2.0 Maritime Cyber Risk Crosswalk* (Version 0.2.0). https://doi.org/ or https://kelvinuduma.github.io/ism-cyber-crosswalk/
+
+### BibTeX
+```bibtex
+@software{uduma2026ismcrosswalk,
+  author = {Uduma, Kelvin Chimaobi},
+  title = {ISM Code ↔ NIST CSF 2.0 Maritime Cyber Risk Crosswalk},
+  version = {0.2.0},
+  year = {2026},
+  url = {https://kelvinuduma.github.io/ism-cyber-crosswalk/},
+  note = {Practitioner mapping and gap analysis for vessel safety management systems}
+}
+```
+
+## Changelog
+
+See [`CHANGELOG.md`](CHANGELOG.md) for detailed release notes and version history.
 
 ## License
 

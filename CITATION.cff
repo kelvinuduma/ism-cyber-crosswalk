@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you cite or utilize this crosswalk dataset or tool in research or maritime compliance materials, please cite it as below."
+title: "ISM Code ↔ NIST CSF 2.0 Maritime Cyber Risk Crosswalk"
+authors:
+  - family-names: Uduma
+    given-names: Kelvin Chimaobi
+    orcid: "https://orcid.org/0000-0002-7091-8832"
+version: 0.2.0
+date-released: "2026-09-30"
+license: MIT
+repository-code: "https://github.com/kelvinuduma/ism-cyber-crosswalk"
+url: "https://kelvinuduma.github.io/ism-cyber-crosswalk/"
+keywords:
+  - "maritime cybersecurity"
+  - "ISM Code"
+  - "NIST CSF 2.0"
+  - "IMO MSC.428(98)"
+  - "IMO MSC-FAL.1/Circ.3/Rev.3"
+  - "BIMCO Guidelines"
+  - "GRC"
+  - "Safety Management System"
